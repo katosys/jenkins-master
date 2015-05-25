@@ -6,9 +6,17 @@
 
 echo '[Init] Configuring the service...'
 
+OPTS="
+--webroot=${WEBROOT:-'/var/cache/jenkins/war'}
+--httpPort=${HTTPPORT:-8080}
+--ajp13Port=${AJP13PORT:-8009}
+--debug=${DEBUG:-5}
+--handlerCountMax=${HANDLERCOUNTMAX:-100}
+--handlerCountMaxIdle=${HANDLERCOUNTMAXIDLE:-20}"
+
 #------------------------------------------------------------------------------
 # Run:
 #------------------------------------------------------------------------------
 
-echo "[Init] Executing: $*"
-exec $*
+echo "[Init] Executing: $* ${OPTS}"
+exec $* ${OPTS}

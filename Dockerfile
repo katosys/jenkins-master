@@ -40,5 +40,4 @@ ADD rootfs /
 # Expose ports and entrypoint:
 #------------------------------------------------------------------------------
 
-EXPOSE 8080
-ENTRYPOINT ["/init", "/usr/bin/java", "-DJENKINS_HOME=/var/lib/jenkins", "-jar /usr/lib/jenkins/jenkins.war", "--webroot=/var/cache/jenkins/war", "--httpPort=8080", "--ajp13Port=8009", "--debug=6", "--handlerCountMax=100", "--handlerCountMaxIdle=20"]
+ENTRYPOINT ["/init", "/usr/bin/java", "-DJENKINS_HOME=/var/lib/jenkins", "-jar /usr/lib/jenkins/jenkins.war"]
