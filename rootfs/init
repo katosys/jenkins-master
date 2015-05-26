@@ -21,6 +21,10 @@ sed -i "s/XXX-MESOS_FRAMEWORK_NAME-XXX/${MESOS_FRAMEWORK_NAME}/" /var/lib/jenkin
 JENKINS_SYSTEM_MESSAGE="${JENKINS_SYSTEM_MESSAGE:-'Jenkins master'}" && \
 sed -i "s/XXX-JENKINS_SYSTEM_MESSAGE-XXX/${JENKINS_SYSTEM_MESSAGE}/" /var/lib/jenkins/config.xml
 
+# Set the Jenkins URL:
+JENKINS_URL="http://$(cat /proc/sys/kernel/hostname):${PORT0}" && \
+sed -i "s/XXX-JENKINS_URL-XXX/${JENKINS_URL}/" /var/lib/jenkins/config.xml
+
 # Set Jenkins commandline options:
 OPTS="
 --webroot=${WEBROOT:-'/var/cache/jenkins/war'}

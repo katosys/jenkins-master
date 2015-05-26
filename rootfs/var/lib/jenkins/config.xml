@@ -29,7 +29,7 @@
       <secret></secret>
       <checkpoint>false</checkpoint>
       <onDemandRegistration>false</onDemandRegistration>
-      <jenkinsURL></jenkinsURL>
+      <jenkinsURL>XXX-JENKINS_URL-XXX</jenkinsURL>
       <slaveInfos>
         <org.jenkinsci.plugins.mesos.MesosSlaveInfo>
           <slaveCpus>0.1</slaveCpus>
