@@ -6,6 +6,9 @@
 
 echo '[Init] Configuring the service...'
 
+# Use Marathon provided port if HTTPPORT is not set by user:
+[ "${PORT0}" ] && [ ! "${HTTPPORT}" ] && HTTPPORT=${PORT0}
+
 OPTS="
 --webroot=${WEBROOT:-'/var/cache/jenkins/war'}
 --httpPort=${HTTPPORT:-8080}
