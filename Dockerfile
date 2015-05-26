@@ -31,6 +31,13 @@ RUN rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key && \
     yum install -y jenkins && yum clean all
 
 #------------------------------------------------------------------------------
+# Install plugins:
+#------------------------------------------------------------------------------
+
+RUN mkdir -p /var/lib/jenkins/plugins && cd /var/lib/jenkins/plugins && \
+    wget -q http://updates.jenkins-ci.org/latest/mesos.hpi
+
+#------------------------------------------------------------------------------
 # Populate root file system:
 #------------------------------------------------------------------------------
 
