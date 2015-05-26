@@ -23,7 +23,7 @@ sed -i "s/XXX-JENKINS_SYSTEM_MESSAGE-XXX/${JENKINS_SYSTEM_MESSAGE}/" /var/lib/je
 
 # Set the Jenkins URL:
 JENKINS_URL="http://$(cat /proc/sys/kernel/hostname):${PORT0}" && \
-sed -i "s/XXX-JENKINS_URL-XXX/${JENKINS_URL}/" /var/lib/jenkins/config.xml
+sed -i "s#XXX-JENKINS_URL-XXX#${JENKINS_URL}#" /var/lib/jenkins/config.xml
 
 # Set Jenkins commandline options:
 OPTS="
