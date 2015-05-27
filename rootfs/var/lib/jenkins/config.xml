@@ -43,7 +43,7 @@
           <jnlpArgs></jnlpArgs>
           <containerInfo>
             <type>DOCKER</type>
-            <dockerImage>centos:7</dockerImage>
+            <dockerImage>h0tbird/jenkins-slave</dockerImage>
             <networking>BRIDGE</networking>
           </containerInfo>
           <labelString>mesos</labelString>
