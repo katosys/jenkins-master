@@ -1,10 +1,10 @@
 # docker-jenkins
 Containerized jenkins server
 
-This will run an eager Jenkins master.
-It will provision slaves in a Mesos cluster.
-The Mesos cluster is discovered using a Zookeeper cluster.
-Jenkins will register as a Mesos framework if the job queue is not empty.
+- This will run an eager Jenkins master.
+- It will provision slaves in a Mesos cluster.
+- The Mesos cluster is discovered using a Zookeeper cluster.
+- Jenkins will register as a Mesos framework if the job queue is not empty.
 
 ```
 docker run -it --rm \
