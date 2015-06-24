@@ -33,9 +33,9 @@
       <slaveInfos>
         <org.jenkinsci.plugins.mesos.MesosSlaveInfo>
           <slaveCpus>1</slaveCpus>
-          <slaveMem>512</slaveMem>
+          <slaveMem>256</slaveMem>
           <executorCpus>1</executorCpus>
-          <maxExecutors>2</maxExecutors>
+          <maxExecutors>1</maxExecutors>
           <executorMem>128</executorMem>
           <remoteFSRoot>jenkins</remoteFSRoot>
           <idleTerminationMinutes>3</idleTerminationMinutes>
@@ -45,6 +45,7 @@
             <type>DOCKER</type>
             <dockerImage>h0tbird/jenkins-slave</dockerImage>
             <networking>BRIDGE</networking>
+            <portMappings class="empty-list"/>
           </containerInfo>
           <labelString>mesos</labelString>
         </org.jenkinsci.plugins.mesos.MesosSlaveInfo>

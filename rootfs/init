@@ -37,6 +37,8 @@ sed -i "s#XXX-JENKINS_URL-XXX#${JENKINS_URL}#" ${CONFIG_FILE}
 
 # Set Jenkins commandline options:
 OPTS="
+-Dhudson.slaves.NodeProvisioner.MARGIN=${JENKINS_NODE_PROVISIONER_MARGIN:-'10'}
+-Dhudson.slaves.NodeProvisioner.MARGIN0=${JENKINS_NODE_PROVISIONER_MARGIN0:-'0.5'}
 --webroot=${WEBROOT:-'/var/cache/jenkins/war'}
 --httpPort=${HTTPPORT:-8080}
 --ajp13Port=${AJP13PORT:-8009}
