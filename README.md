@@ -8,8 +8,8 @@ Jenkins will register as a Mesos framework if the job queue is not empty.
 
 ```
 docker run -it --rm \
---env HTTPPORT=8282 \
---env AJP13PORT=-1 \
+--env JENKINS_HTTPPORT=8282 \
+--env JENKINS_AJP13PORT=-1 \
 --env JENKINS_SYSTEM_MESSAGE=jenkins-qa \
 --env JENKINS_NODE_PROVISIONER_MARGIN=50 \
 --env JENKINS_NODE_PROVISIONER_MARGIN0=0.85 \

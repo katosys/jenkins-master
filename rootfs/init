@@ -35,20 +35,24 @@ sed -i "s/XXX-JENKINS_SYSTEM_MESSAGE-XXX/${JENKINS_SYSTEM_MESSAGE}/" ${CONFIG_FI
 JENKINS_URL="http://$(cat /proc/sys/kernel/hostname):${PORT0}" && \
 sed -i "s#XXX-JENKINS_URL-XXX#${JENKINS_URL}#" ${CONFIG_FILE}
 
-# Set Jenkins commandline options:
-OPTS="
+# Set Java commandline options:
+JAVA_OPTS="
+-DJENKINS_HOME=/var/lib/jenkins
 -Dhudson.slaves.NodeProvisioner.MARGIN=${JENKINS_NODE_PROVISIONER_MARGIN:-'10'}
--Dhudson.slaves.NodeProvisioner.MARGIN0=${JENKINS_NODE_PROVISIONER_MARGIN0:-'0.5'}
---webroot=${WEBROOT:-'/var/cache/jenkins/war'}
---httpPort=${HTTPPORT:-8080}
---ajp13Port=${AJP13PORT:-8009}
---debug=${DEBUG:-5}
---handlerCountMax=${HANDLERCOUNTMAX:-100}
---handlerCountMaxIdle=${HANDLERCOUNTMAXIDLE:-20}"
+-Dhudson.slaves.NodeProvisioner.MARGIN0=${JENKINS_NODE_PROVISIONER_MARGIN0:-'0.5'}"
+
+# Set Jenkins commandline options:
+JENKINS_OPTS="
+--webroot=${JENKINS_WEBROOT:-'/var/cache/jenkins/war'}
+--httpPort=${JENKINS_HTTPPORT:-8080}
+--ajp13Port=${JENKINS_AJP13PORT:-8009}
+--debug=${JENKINS_DEBUG:-5}
+--handlerCountMax=${JENKINS_HANDLER_COUNT_MAX:-100}
+--handlerCountMaxIdle=${JENKINS_HANDLER_COUNT_MAX_IDLE:-20}"
 
 #------------------------------------------------------------------------------
 # Run:
 #------------------------------------------------------------------------------
 
-echo "[Init] Executing: $* ${OPTS}"
-exec $* ${OPTS}
+echo '[Init] Executing Jenkins'
+exec /usr/bin/java ${JAVA_OPTS} -jar /usr/lib/jenkins/jenkins.war ${JENKINS_OPTS}

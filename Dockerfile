@@ -47,4 +47,4 @@ ADD rootfs /
 # Expose ports and entrypoint:
 #------------------------------------------------------------------------------
 
-ENTRYPOINT ["/init", "/usr/bin/java", "-DJENKINS_HOME=/var/lib/jenkins", "-jar /usr/lib/jenkins/jenkins.war"]
+ENTRYPOINT ["/init"]
