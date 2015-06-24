@@ -9,21 +9,31 @@ echo '[Init] Configuring the service...'
 # Use Marathon provided port if HTTPPORT is not set by user:
 [ "${PORT0}" ] && [ ! "${HTTPPORT}" ] && HTTPPORT=${PORT0}
 
+CONFIG_FILE='/var/lib/jenkins/config.xml'
+
 # Set the Mesos master:
 MESOS_MASTER="${MESOS_MASTER:-'zk://zk1:2181,zk2:2181,zk3:2181/mesos'}" && \
-sed -i "s#XXX-MESOS_MASTER-XXX#${MESOS_MASTER}#" /var/lib/jenkins/config.xml
+sed -i "s#XXX-MESOS_MASTER-XXX#${MESOS_MASTER}#" ${CONFIG_FILE}
 
 # Set the Mesos framework name:
 MESOS_FRAMEWORK_NAME="${MESOS_FRAMEWORK_NAME:-'jenkins'}" && \
-sed -i "s/XXX-MESOS_FRAMEWORK_NAME-XXX/${MESOS_FRAMEWORK_NAME}/" /var/lib/jenkins/config.xml
+sed -i "s/XXX-MESOS_FRAMEWORK_NAME-XXX/${MESOS_FRAMEWORK_NAME}/" ${CONFIG_FILE}
+
+# Set whether to enable Mesos checkpointing or not:
+MESOS_CHECKPOINT="${MESOS_CHECKPOINT:-'false'}" && \
+sed -i "s/XXX-MESOS_CHECKPOINT-XXX/${MESOS_CHECKPOINT}/" ${CONFIG_FILE}
+
+# Set whether to use Mesos framework on-demand registration:
+MESOS_ON_DEMAND_REGISTRATION="${MESOS_ON_DEMAND_REGISTRATION:-'false'}" && \
+sed -i "s/XXX-MESOS_ON_DEMAND_REGISTRATION-XXX/${MESOS_ON_DEMAND_REGISTRATION}/" ${CONFIG_FILE}
 
 # Set the Jenkins system message:
 JENKINS_SYSTEM_MESSAGE="${JENKINS_SYSTEM_MESSAGE:-'Jenkins master'}" && \
-sed -i "s/XXX-JENKINS_SYSTEM_MESSAGE-XXX/${JENKINS_SYSTEM_MESSAGE}/" /var/lib/jenkins/config.xml
+sed -i "s/XXX-JENKINS_SYSTEM_MESSAGE-XXX/${JENKINS_SYSTEM_MESSAGE}/" ${CONFIG_FILE}
 
 # Set the Jenkins URL:
 JENKINS_URL="http://$(cat /proc/sys/kernel/hostname):${PORT0}" && \
-sed -i "s#XXX-JENKINS_URL-XXX#${JENKINS_URL}#" /var/lib/jenkins/config.xml
+sed -i "s#XXX-JENKINS_URL-XXX#${JENKINS_URL}#" ${CONFIG_FILE}
 
 # Set Jenkins commandline options:
 OPTS="
