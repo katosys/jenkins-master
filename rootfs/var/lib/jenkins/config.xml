@@ -27,16 +27,16 @@
       <slavesUser></slavesUser>
       <principal>jenkins</principal>
       <secret></secret>
-      <checkpoint>false</checkpoint>
-      <onDemandRegistration>false</onDemandRegistration>
+      <checkpoint>XXX-MESOS_CHECKPOINT-XXX</checkpoint>
+      <onDemandRegistration>XXX-MESOS_ON_DEMAND_REGISTRATION-XXX</onDemandRegistration>
       <jenkinsURL>XXX-JENKINS_URL-XXX</jenkinsURL>
       <slaveInfos>
         <org.jenkinsci.plugins.mesos.MesosSlaveInfo>
-          <slaveCpus>0.1</slaveCpus>
+          <slaveCpus>1</slaveCpus>
           <slaveMem>512</slaveMem>
-          <executorCpus>0.1</executorCpus>
+          <executorCpus>1</executorCpus>
           <maxExecutors>2</maxExecutors>
-          <executorMem>128</executorMem>
+          <executorMem>256</executorMem>
           <remoteFSRoot>jenkins</remoteFSRoot>
           <idleTerminationMinutes>3</idleTerminationMinutes>
           <jvmArgs>-Xms16m -XX:+UseConcMarkSweepGC -Djava.net.preferIPv4Stack=true</jvmArgs>
