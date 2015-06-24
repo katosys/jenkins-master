@@ -3,7 +3,7 @@
   <disabledAdministrativeMonitors>
     <string>jenkins.diagnostics.SecurityIsOffMonitor</string>
   </disabledAdministrativeMonitors>
-  <version>1.615</version>
+  <version>1.617</version>
   <numExecutors>0</numExecutors>
   <mode>EXCLUSIVE</mode>
   <useSecurity>true</useSecurity>
@@ -36,7 +36,7 @@
           <slaveMem>512</slaveMem>
           <executorCpus>1</executorCpus>
           <maxExecutors>2</maxExecutors>
-          <executorMem>256</executorMem>
+          <executorMem>128</executorMem>
           <remoteFSRoot>jenkins</remoteFSRoot>
           <idleTerminationMinutes>3</idleTerminationMinutes>
           <jvmArgs>-Xms16m -XX:+UseConcMarkSweepGC -Djava.net.preferIPv4Stack=true</jvmArgs>
