@@ -17,6 +17,7 @@ docker run -it --rm \
 --env MESOS_FRAMEWORK_NAME=jenkins-framework \
 --env MESOS_CHECKPOINT=true \
 --env MESOS_ON_DEMAND_REGISTRATION=true \
+--env MESOS_IDLE_TERMINATION_MINUTES=1 \
 --publish 8080:8282 \
 h0tbird/jenkins
 ```

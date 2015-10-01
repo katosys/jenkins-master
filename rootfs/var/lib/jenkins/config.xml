@@ -18,7 +18,7 @@
   <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
   <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
   <clouds>
-    <org.jenkinsci.plugins.mesos.MesosCloud plugin="mesos@0.7.0">
+    <org.jenkinsci.plugins.mesos.MesosCloud plugin="mesos@0.8.0">
       <name>MesosCloud</name>
       <nativeLibraryPath>/usr/lib/libmesos.so</nativeLibraryPath>
       <master>XXX-MESOS_MASTER-XXX</master>
