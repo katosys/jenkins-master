@@ -1,0 +1,47 @@
+{
+  "id": "/sys/jenkins",
+  "instances": 1,
+  "cpus": 0.5,
+  "mem": 1024,
+  "disk": 0,
+  "requirePorts": false,
+  "backoffSeconds": 1,
+  "backoffFactor": 1.15,
+  "maxLaunchDelaySeconds": 3600,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "h0tbird/jenkins",
+      "network": "HOST",
+      "privileged": false,
+      "parameters": [
+        { "key": "env", "value": "JENKINS_AJP13PORT=-1" },
+        { "key": "env", "value": "JENKINS_SYSTEM_MESSAGE=sys-jenkins" },
+        { "key": "env", "value": "JENKINS_NODE_PROVISIONER_MARGIN=50" },
+        { "key": "env", "value": "JENKINS_NODE_PROVISIONER_MARGIN0=0.85" },
+        { "key": "env", "value": "MESOS_MASTER=zk://core-1:2181,core-5:2181,core-9:2181/mesos" },
+        { "key": "env", "value": "MESOS_FRAMEWORK_NAME=sys-jenkins" },
+        { "key": "env", "value": "MESOS_CHECKPOINT=true" },
+        { "key": "env", "value": "MESOS_ON_DEMAND_REGISTRATION=true" },
+        { "key": "env", "value": "MESOS_IDLE_TERMINATION_MINUTES=1" }
+      ],
+      "forcePullImage": false
+    }
+  },
+  "healthChecks": [
+    {
+      "gracePeriodSeconds": 120,
+      "intervalSeconds": 30,
+      "maxConsecutiveFailures": 3,
+      "path": "/",
+      "portIndex": 0,
+      "protocol": "HTTP",
+      "timeoutSeconds": 5
+    }
+  ],
+  "upgradeStrategy": {
+    "minimumHealthCapacity": 0,
+    "maximumOverCapacity": 1
+  },
+  "version": "2015-11-30T12:00:00.000Z"
+}
