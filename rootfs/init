@@ -36,7 +36,7 @@ JENKINS_SYSTEM_MESSAGE="${JENKINS_SYSTEM_MESSAGE:-'Jenkins master'}" && \
 sed -i "s/XXX-JENKINS_SYSTEM_MESSAGE-XXX/${JENKINS_SYSTEM_MESSAGE}/" ${CONFIG_FILE}
 
 # Set the Jenkins URL:
-JENKINS_URL="http://$(cat /proc/sys/kernel/hostname):${PORT0}" && \
+JENKINS_URL="http://$(hostname -i):${PORT0}" && \
 sed -i "s#XXX-JENKINS_URL-XXX#${JENKINS_URL}#" ${CONFIG_FILE}
 
 # Set Java commandline options:
