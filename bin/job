@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# ./bin/job clone 10
+# ./bin/job run 10
+
+[ -z "${JENKINS_URL}" ] && echo 'Ops! JENKINS_URL is not set' && exit 1
+
+for i in `seq -w $2`; do
+  case $1 in
+
+    clone)
+      curl -sX POST -H "Content-Type: text/xml" ${JENKINS_URL}/createItem?name=test-${i} -d @job.xml
+      ;;
+
+    run)
+      curl -sX POST "${JENKINS_URL}/job/test-${i}/build"
+      ;;
+
+  esac
+done
