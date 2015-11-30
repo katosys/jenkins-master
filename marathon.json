@@ -11,7 +11,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "h0tbird/jenkins",
+      "image": "h0tbird/jenkins:v1.639-1",
       "network": "HOST",
       "privileged": false,
       "parameters": [

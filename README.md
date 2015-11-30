@@ -1,4 +1,7 @@
 # docker-jenkins
+
+[![Build Status](https://travis-ci.org/h0tbird/docker-jenkins.svg?branch=master)](https://travis-ci.org/h0tbird/docker-jenkins)
+
 This is a Mesos-aware containerized jenkins server.
 
 - It will run an eager Jenkins master.
