@@ -32,9 +32,9 @@
       <jenkinsURL>XXX-JENKINS_URL-XXX</jenkinsURL>
       <slaveInfos>
         <org.jenkinsci.plugins.mesos.MesosSlaveInfo>
-          <slaveCpus>1</slaveCpus>
+          <slaveCpus>1.0</slaveCpus>
           <slaveMem>256</slaveMem>
-          <executorCpus>1</executorCpus>
+          <executorCpus>1.0</executorCpus>
           <maxExecutors>1</maxExecutors>
           <executorMem>128</executorMem>
           <remoteFSRoot>jenkins</remoteFSRoot>
@@ -44,9 +44,35 @@
           <containerInfo>
             <type>DOCKER</type>
             <dockerImage>h0tbird/jenkins-slave</dockerImage>
+            <volumes>
+              <org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
+                <containerPath>/usr/bin/docker</containerPath>
+                <hostPath>/usr/bin/docker</hostPath>
+                <readOnly>true</readOnly>
+              </org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
+              <org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
+                <containerPath>/lib64/libsystemd.so.0</containerPath>
+                <hostPath>/lib/libsystemd.so.0</hostPath>
+                <readOnly>true</readOnly>
+              </org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
+              <org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
+                <containerPath>/lib64/libgcrypt.so.20</containerPath>
+                <hostPath>/lib/libgcrypt.so.20</hostPath>
+                <readOnly>true</readOnly>
+              </org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
+              <org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
+                <containerPath>/var/run/docker.sock</containerPath>
+                <hostPath>/var/run/docker.sock</hostPath>
+                <readOnly>false</readOnly>
+              </org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
+            </volumes>
             <networking>BRIDGE</networking>
-            <portMappings class="empty-list"/>
+            <useCustomDockerCommandShell>false</useCustomDockerCommandShell>
+            <customDockerCommandShell></customDockerCommandShell>
+            <dockerPrivilegedMode>false</dockerPrivilegedMode>
+            <dockerForcePullImage>false</dockerForcePullImage>
           </containerInfo>
+          <mode>NORMAL</mode>
           <labelString>mesos</labelString>
         </org.jenkinsci.plugins.mesos.MesosSlaveInfo>
       </slaveInfos>
