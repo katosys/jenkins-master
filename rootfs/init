@@ -8,6 +8,7 @@ echo '[Init] Configuring the service...'
 
 JENKINS_HOME='/var/lib/jenkins'
 CONFIG_FILE="${JENKINS_HOME}_staging/config.xml"
+LOCATION_CONF="${JENKINS_HOME}_staging/jenkins.model.JenkinsLocationConfiguration.xml"
 
 # Use Marathon provided port if JENKINS_HTTPPORT is not set by user:
 [ "${PORT0}" ] && [ ! "${JENKINS_HTTPPORT}" ] && JENKINS_HTTPPORT=${PORT0}
@@ -43,9 +44,14 @@ sed -i "s/XXX-JENKINS_SYSTEM_MESSAGE-XXX/${JENKINS_SYSTEM_MESSAGE}/" ${CONFIG_FI
 # Set the Jenkins URL:
 JENKINS_URL="http://$(hostname -i):${JENKINS_HTTPPORT}" && \
 sed -i "s#XXX-JENKINS_URL-XXX#${JENKINS_URL}#" ${CONFIG_FILE}
+sed -i "s#XXX-JENKINS_URL-XXX#${JENKINS_URL}#" ${LOCATION_CONF}
+
+# Set admin email:
+JENKINS_ADMIN_EMAIL="${JENKINS_ADMIN_EMAIL}:-'address not configured yet'"
+sed -i "s#XXX-JENKINS_ADMIN_EMAIL-XXX#${JENKINS_ADMIN_EMAIL}#" ${LOCATION_CONF}
 
 # Populate JENKINS_HOME if empty:
-[ "$(ls -A ${JENKINS_HOME})" ] && cp ${CONFIG_FILE} ${JENKINS_HOME} || \
+[ "$(ls -A ${JENKINS_HOME})" ] && cp ${CONFIG_FILE} ${LOCATION_CONF} ${JENKINS_HOME} || \
 cp -R ${JENKINS_HOME}_staging/* ${JENKINS_HOME}/
 
 #------------------------------------------------------------------------------

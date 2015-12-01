@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jenkins.model.JenkinsLocationConfiguration>
+  <adminAddress>XXX-JENKINS_ADMIN_EMAIL-XXX</adminAddress>
+  <jenkinsUrl>XXX-JENKINS_URL-XXX</jenkinsUrl>
+</jenkins.model.JenkinsLocationConfiguration>

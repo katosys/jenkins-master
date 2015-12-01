@@ -16,6 +16,7 @@ docker run -it --rm \
 --env JENKINS_SYSTEM_MESSAGE=jenkins-qa \
 --env JENKINS_NODE_PROVISIONER_MARGIN=50 \
 --env JENKINS_NODE_PROVISIONER_MARGIN0=0.85 \
+--env JENKINS_ADMIN_EMAIL=nobody@nowhere \
 --env MESOS_MASTER=zk://core-1:2181,core-3:2181,core-9:2181/mesos \
 --env MESOS_FRAMEWORK_NAME=jenkins-framework \
 --env MESOS_CHECKPOINT=true \
