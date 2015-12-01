@@ -3,7 +3,7 @@
   <disabledAdministrativeMonitors>
     <string>jenkins.diagnostics.SecurityIsOffMonitor</string>
   </disabledAdministrativeMonitors>
-  <version>1.617</version>
+  <version>XXX-JENKINS_VERSION-XXX</version>
   <numExecutors>0</numExecutors>
   <mode>EXCLUSIVE</mode>
   <useSecurity>true</useSecurity>
@@ -18,7 +18,7 @@
   <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
   <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
   <clouds>
-    <org.jenkinsci.plugins.mesos.MesosCloud plugin="mesos@0.8.0">
+    <org.jenkinsci.plugins.mesos.MesosCloud plugin="mesos@XXX-JENKINS_MESOS_VERSION-XXX">
       <name>MesosCloud</name>
       <nativeLibraryPath>/usr/lib/libmesos.so</nativeLibraryPath>
       <master>XXX-MESOS_MASTER-XXX</master>

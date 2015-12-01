@@ -7,13 +7,14 @@
 echo '[Init] Configuring the service...'
 
 JENKINS_HOME='/var/lib/jenkins'
-CONFIG_FILE="${JENKINS_HOME}/config.xml"
-
-# Populate JENKINS_HOME if empty:
-[ "$(ls -A ${JENKINS_HOME})" ] || cp -R ${JENKINS_HOME}_staging/* ${JENKINS_HOME}/
+CONFIG_FILE="${JENKINS_HOME}_staging/config.xml"
 
 # Use Marathon provided port if JENKINS_HTTPPORT is not set by user:
 [ "${PORT0}" ] && [ ! "${JENKINS_HTTPPORT}" ] && JENKINS_HTTPPORT=${PORT0}
+
+# Set versions:
+sed -i "s#XXX-JENKINS_VERSION-XXX#${JENKINS_VERSION}#" ${CONFIG_FILE}
+sed -i "s#XXX-JENKINS_MESOS_VERSION-XXX#${JENKINS_MESOS_VERSION}#" ${CONFIG_FILE}
 
 # Set the Mesos master:
 MESOS_MASTER="${MESOS_MASTER:-'zk://zk1:2181,zk2:2181,zk3:2181/mesos'}" && \
@@ -40,8 +41,16 @@ JENKINS_SYSTEM_MESSAGE="${JENKINS_SYSTEM_MESSAGE:-'Jenkins master'}" && \
 sed -i "s/XXX-JENKINS_SYSTEM_MESSAGE-XXX/${JENKINS_SYSTEM_MESSAGE}/" ${CONFIG_FILE}
 
 # Set the Jenkins URL:
-JENKINS_URL="http://$(hostname -i):${PORT0}" && \
+JENKINS_URL="http://$(hostname -i):${JENKINS_HTTPPORT}" && \
 sed -i "s#XXX-JENKINS_URL-XXX#${JENKINS_URL}#" ${CONFIG_FILE}
+
+# Populate JENKINS_HOME if empty:
+[ "$(ls -A ${JENKINS_HOME})" ] && cp ${CONFIG_FILE} ${JENKINS_HOME} || \
+cp -R ${JENKINS_HOME}_staging/* ${JENKINS_HOME}/
+
+#------------------------------------------------------------------------------
+# Run:
+#------------------------------------------------------------------------------
 
 # Set Java commandline options:
 JAVA_OPTS="
@@ -57,10 +66,6 @@ JENKINS_OPTS="
 --debug=${JENKINS_DEBUG:-5}
 --handlerCountMax=${JENKINS_HANDLER_COUNT_MAX:-100}
 --handlerCountMaxIdle=${JENKINS_HANDLER_COUNT_MAX_IDLE:-20}"
-
-#------------------------------------------------------------------------------
-# Run:
-#------------------------------------------------------------------------------
 
 echo '[Init] Executing Jenkins'
 exec /usr/bin/java ${JAVA_OPTS} -jar /usr/lib/jenkins/jenkins.war ${JENKINS_OPTS}
