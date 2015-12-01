@@ -21,6 +21,8 @@ docker run -it --rm \
 --env MESOS_CHECKPOINT=true \
 --env MESOS_ON_DEMAND_REGISTRATION=true \
 --env MESOS_IDLE_TERMINATION_MINUTES=1 \
+--name jenkins \
+--volume ${PWD}/jenkins_data:/var/lib/jenkins \
 --publish 8080:8282 \
 h0tbird/jenkins
 ```

@@ -51,6 +51,7 @@ RUN mkdir -p /var/lib/jenkins/plugins && cd /var/lib/jenkins/plugins && \
 #------------------------------------------------------------------------------
 
 ADD rootfs /
+RUN mv /var/lib/jenkins /var/lib/jenkins_staging
 
 #------------------------------------------------------------------------------
 # Expose ports and entrypoint:

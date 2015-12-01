@@ -6,10 +6,14 @@
 
 echo '[Init] Configuring the service...'
 
+JENKINS_HOME='/var/lib/jenkins'
+CONFIG_FILE="${JENKINS_HOME}/config.xml"
+
+# Populate JENKINS_HOME if empty:
+[ "$(ls -A ${JENKINS_HOME})" ] || cp -R ${JENKINS_HOME}_staging/* ${JENKINS_HOME}/
+
 # Use Marathon provided port if JENKINS_HTTPPORT is not set by user:
 [ "${PORT0}" ] && [ ! "${JENKINS_HTTPPORT}" ] && JENKINS_HTTPPORT=${PORT0}
-
-CONFIG_FILE='/var/lib/jenkins/config.xml'
 
 # Set the Mesos master:
 MESOS_MASTER="${MESOS_MASTER:-'zk://zk1:2181,zk2:2181,zk3:2181/mesos'}" && \
