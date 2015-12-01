@@ -42,12 +42,12 @@ JENKINS_SYSTEM_MESSAGE="${JENKINS_SYSTEM_MESSAGE:-'Jenkins master'}" && \
 sed -i "s/XXX-JENKINS_SYSTEM_MESSAGE-XXX/${JENKINS_SYSTEM_MESSAGE}/" ${CONFIG_FILE}
 
 # Set the Jenkins URL:
-JENKINS_URL="http://$(hostname -i):${JENKINS_HTTPPORT}" && \
+JENKINS_URL="http://${HOST:-$(hostname -i)}:${JENKINS_HTTPPORT}" && \
 sed -i "s#XXX-JENKINS_URL-XXX#${JENKINS_URL}#" ${CONFIG_FILE}
 sed -i "s#XXX-JENKINS_URL-XXX#${JENKINS_URL}#" ${LOCATION_CONF}
 
 # Set admin email:
-JENKINS_ADMIN_EMAIL="${JENKINS_ADMIN_EMAIL}:-'address not configured yet'"
+JENKINS_ADMIN_EMAIL="${JENKINS_ADMIN_EMAIL:-'address not configured yet'}"
 sed -i "s#XXX-JENKINS_ADMIN_EMAIL-XXX#${JENKINS_ADMIN_EMAIL}#" ${LOCATION_CONF}
 
 # Populate JENKINS_HOME if empty:
