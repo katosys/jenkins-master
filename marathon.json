@@ -29,7 +29,7 @@
         { "key": "volume", "value": "sys-jenkins:/var/lib/jenkins" },
         { "key": "security-opt", "value": "label:disable" }
       ],
-      "forcePullImage": false
+      "forcePullImage": true
     }
   },
   "healthChecks": [

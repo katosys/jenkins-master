@@ -61,6 +61,11 @@
                 <readOnly>true</readOnly>
               </org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
               <org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
+                <containerPath>/lib64/libdevmapper.so.1.02</containerPath>
+                <hostPath>/lib/libdevmapper.so.1.02</hostPath>
+                <readOnly>true</readOnly>
+              </org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
+              <org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
                 <containerPath>/var/run/docker.sock</containerPath>
                 <hostPath>/var/run/docker.sock</hostPath>
                 <readOnly>false</readOnly>
