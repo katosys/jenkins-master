@@ -11,7 +11,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "h0tbird/jenkins:latest",
+      "image": "h0tbird/jenkins:v1.639-4",
       "network": "HOST",
       "privileged": false,
       "parameters": [
@@ -29,7 +29,7 @@
         { "key": "volume", "value": "sys-jenkins:/var/lib/jenkins" },
         { "key": "security-opt", "value": "label:disable" }
       ],
-      "forcePullImage": true
+      "forcePullImage": false
     }
   },
   "healthChecks": [
@@ -47,5 +47,5 @@
     "minimumHealthCapacity": 0,
     "maximumOverCapacity": 1
   },
-  "version": "2015-12-01T11:30:00.000Z"
+  "version": "2015-12-02T12:24:00.000Z"
 }
