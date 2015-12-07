@@ -3,6 +3,7 @@
 # ./bin/job clone 10
 # ./bin/job run 10
 
+[ $# -ne 2 ] && echo "Usage: $0 <clone|run> <# of jobs>" && exit 1
 [ -z "${JENKINS_URL}" ] && echo 'Ops! JENKINS_URL is not set' && exit 1
 
 for i in `seq -w $2`; do

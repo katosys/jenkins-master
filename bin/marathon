@@ -3,6 +3,7 @@
 # ./bin/marathon start
 # ./bin/marathon restart
 
+[ $# -ne 1 ] && echo "Usage: $0 <start|restart>" && exit 1
 [ -z "${MARATHON_URL}" ] && echo 'Ops! MARATHON_URL is not set' && exit 1
 
 case $1 in
