@@ -16,6 +16,7 @@
       "network": "HOST",
       "privileged": false,
       "parameters": [
+        { "key": "env", "value": "HOST=jenkins-sys.marathon.cell-1.ofi.mesos" },
         { "key": "env", "value": "JENKINS_HTTPPORT=31080" },
         { "key": "env", "value": "JENKINS_AJP13PORT=-1" },
         { "key": "env", "value": "JENKINS_SYSTEM_MESSAGE=Systems Operations" },
