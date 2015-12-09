@@ -25,7 +25,7 @@
     grep -q CERTIFICATE /tmp/${CERT_ALIAS}.pem && {
 
       # Import the certificate:
-		  keytool -import -trustcacerts -noprompt -file /tmp/${CERT_ALIAS}.pem \
+      keytool -import -trustcacerts -noprompt -file /tmp/${CERT_ALIAS}.pem \
       -alias ${CERT_ALIAS} -keystore ${JAVA_HOME}/lib/security/cacerts \
       -storepass changeit
     }
