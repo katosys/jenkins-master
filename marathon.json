@@ -28,6 +28,7 @@
         { "key": "env", "value": "MESOS_CHECKPOINT=true" },
         { "key": "env", "value": "MESOS_ON_DEMAND_REGISTRATION=true" },
         { "key": "env", "value": "MESOS_IDLE_TERMINATION_MINUTES=1" },
+        { "key": "env", "value": "SSL_TRUST=stash.redtonic:443" },
         { "key": "volume-driver", "value": "rbd" },
         { "key": "volume", "value": "sys-jenkins:/var/lib/jenkins" },
         { "key": "security-opt", "value": "label:disable" }

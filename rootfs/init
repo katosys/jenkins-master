@@ -1,10 +1,41 @@
 #!/bin/bash
 
 #------------------------------------------------------------------------------
-# Configure the service:
+# Install SSL certificates:
 #------------------------------------------------------------------------------
 
-echo '[Init] Configuring the service...'
+[ "${SSL_TRUST}" ] && {
+
+  readonly JAVA_HOME='/etc/alternatives/jre'
+  IFS=',' read -ra ADDR <<< "${SSL_TRUST}"
+
+  # For each URL:
+  for i in "${ADDR[@]}"; do
+
+    # Set some variables:
+    URL_HASH=$(echo ${i} | md5sum -)
+    CERT_ALIAS=${URL_HASH:0:8}
+
+    # Get the remote certificate:
+    openssl s_client -connect ${i} 2>/dev/null </dev/null | \
+    sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > \
+    /tmp/${CERT_ALIAS}.pem
+
+    # Verify we have something usable:
+    grep -q CERTIFICATE /tmp/${CERT_ALIAS}.pem && {
+
+      # Import the certificate:
+		  keytool -import -trustcacerts -noprompt -file /tmp/${CERT_ALIAS}.pem \
+      -alias ${CERT_ALIAS} -keystore ${JAVA_HOME}/lib/security/cacerts \
+      -storepass changeit
+    }
+
+  done
+}
+
+#------------------------------------------------------------------------------
+# Configure the service:
+#------------------------------------------------------------------------------
 
 JENKINS_HOME='/var/lib/jenkins'
 CONFIG_FILE="${JENKINS_HOME}_staging/config.xml"

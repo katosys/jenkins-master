@@ -22,6 +22,7 @@ docker run -it --rm \
 --env MESOS_CHECKPOINT=true \
 --env MESOS_ON_DEMAND_REGISTRATION=true \
 --env MESOS_IDLE_TERMINATION_MINUTES=1 \
+--env SSL_TRUST=foo:443,bar:443 \
 --name jenkins \
 --volume ${PWD}/jenkins_data:/var/lib/jenkins \
 --publish 8080:8282 \
