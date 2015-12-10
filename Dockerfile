@@ -10,7 +10,7 @@ MAINTAINER Marc Villacorta Morera <marc.villacorta@gmail.com>
 #------------------------------------------------------------------------------
 
 ENV MESOS_VERSION 0.25.0
-ENV JENKINS_VERSION 1.640
+ENV JENKINS_VERSION 1.641
 ENV JENKINS_MESOS_VERSION 0.8.0
 
 #------------------------------------------------------------------------------

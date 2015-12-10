@@ -12,23 +12,25 @@
   # For each URL:
   for i in "${ADDR[@]}"; do
 
-    # Set some variables:
-    URL_HASH=$(echo ${i} | md5sum -)
-    CERT_ALIAS=${URL_HASH:0:8}
+    # Set variables:
+    ALIAS=$(echo ${i} | tr .: _)
 
     # Get the remote certificate:
+    echo "[init] Downloading ${ALIAS} certificate..."
     openssl s_client -connect ${i} 2>/dev/null </dev/null | \
     sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > \
-    /tmp/${CERT_ALIAS}.pem
+    /tmp/${ALIAS}.pem
 
     # Verify we have something usable:
-    grep -q CERTIFICATE /tmp/${CERT_ALIAS}.pem && {
+    grep -q CERTIFICATE /tmp/${ALIAS}.pem && {
 
       # Import the certificate:
-      keytool -import -trustcacerts -noprompt -file /tmp/${CERT_ALIAS}.pem \
-      -alias ${CERT_ALIAS} -keystore ${JAVA_HOME}/lib/security/cacerts \
+      echo "[init] Importing ${ALIAS} certificate..."
+      keytool -import -trustcacerts -noprompt -file /tmp/${ALIAS}.pem \
+      -alias ${ALIAS} -keystore ${JAVA_HOME}/lib/security/cacerts \
       -storepass changeit
-    }
+
+    } || echo "[init] Ops! Cannot retrieve the ${ALIAS} certificate"
 
   done
 }
