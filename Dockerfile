@@ -9,9 +9,9 @@ MAINTAINER Marc Villacorta Morera <marc.villacorta@gmail.com>
 # Environment variables:
 #------------------------------------------------------------------------------
 
-ENV MESOS_VERSION 0.25.0
-ENV JENKINS_VERSION 1.641
-ENV JENKINS_MESOS_VERSION 0.8.0
+ENV MESOS_VERSION="0.25.0" \
+    JENKINS_VERSION="1.641" \
+    JENKINS_MESOS_VERSION="0.8.0"
 
 #------------------------------------------------------------------------------
 # Update the base image:

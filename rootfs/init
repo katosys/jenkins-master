@@ -6,7 +6,6 @@
 
 [ "${SSL_TRUST}" ] && {
 
-  readonly JAVA_HOME='/etc/alternatives/jre'
   IFS=',' read -ra ADDR <<< "${SSL_TRUST}"
 
   # For each URL:
@@ -17,18 +16,22 @@
 
     # Get the remote certificate:
     echo "[init] Downloading ${ALIAS} certificate..."
-    openssl s_client -connect ${i} 2>/dev/null </dev/null | \
-    sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > \
-    /tmp/${ALIAS}.pem
+    echo | openssl s_client -showcerts -connect ${i} 2>/dev/null | \
+    sed -n '/-BEGIN/,/-END/ p' > /tmp/${ALIAS}.pem
 
     # Verify we have something usable:
     grep -q CERTIFICATE /tmp/${ALIAS}.pem && {
 
-      # Import the certificate:
-      echo "[init] Importing ${ALIAS} certificate..."
+      # Import the certificate (java):
+      echo "[init] Importing ${ALIAS} certificate (java)..."
       keytool -import -trustcacerts -noprompt -file /tmp/${ALIAS}.pem \
-      -alias ${ALIAS} -keystore ${JAVA_HOME}/lib/security/cacerts \
+      -alias ${ALIAS} -keystore /etc/pki/java/cacerts \
       -storepass changeit
+
+      # Import the certificate (system):
+      echo "[init] Importing ${ALIAS} certificate (system)..."
+      mv /tmp/${ALIAS}.pem /etc/pki/ca-trust/source/anchors/
+      update-ca-trust
 
     } || echo "[init] Ops! Cannot retrieve the ${ALIAS} certificate"
 
