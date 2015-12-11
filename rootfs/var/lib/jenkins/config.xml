@@ -71,7 +71,16 @@
                 <readOnly>false</readOnly>
               </org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
             </volumes>
+            <parameters>
+              <org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Parameter>
+                <key>env</key>
+                <value>SSL_TRUST=XXX-SSL_TRUST-XXX</value>
+              </org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Parameter>
+            </parameters>
             <networking>HOST</networking>
+            <portMappings class="empty-list"/>
+            <useCustomDockerCommandShell>true</useCustomDockerCommandShell>
+            <customDockerCommandShell>/init</customDockerCommandShell>
             <useCustomDockerCommandShell>false</useCustomDockerCommandShell>
             <customDockerCommandShell></customDockerCommandShell>
             <dockerPrivilegedMode>false</dockerPrivilegedMode>
