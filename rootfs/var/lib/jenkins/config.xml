@@ -81,8 +81,6 @@
             <portMappings class="empty-list"/>
             <useCustomDockerCommandShell>true</useCustomDockerCommandShell>
             <customDockerCommandShell>/init</customDockerCommandShell>
-            <useCustomDockerCommandShell>false</useCustomDockerCommandShell>
-            <customDockerCommandShell></customDockerCommandShell>
             <dockerPrivilegedMode>false</dockerPrivilegedMode>
             <dockerForcePullImage>true</dockerForcePullImage>
           </containerInfo>
