@@ -32,10 +32,10 @@
       <jenkinsURL>XXX-JENKINS_URL-XXX</jenkinsURL>
       <slaveInfos>
         <org.jenkinsci.plugins.mesos.MesosSlaveInfo>
-          <slaveCpus>1.0</slaveCpus>
+          <slaveCpus>2.0</slaveCpus>
           <slaveMem>256</slaveMem>
           <executorCpus>1.0</executorCpus>
-          <maxExecutors>1</maxExecutors>
+          <maxExecutors>2</maxExecutors>
           <executorMem>128</executorMem>
           <remoteFSRoot>jenkins</remoteFSRoot>
           <idleTerminationMinutes>XXX-MESOS_IDLE_TERMINATION_MINUTES-XXX</idleTerminationMinutes>

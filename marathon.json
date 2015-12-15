@@ -11,7 +11,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "h0tbird/jenkins:v1.640-3",
+      "image": "h0tbird/jenkins:v1.642-1",
       "network": "BRIDGE",
       "portMappings": [
         { "containerPort": 80, "hostPort": 0 }
@@ -22,14 +22,12 @@
         { "key": "env", "value": "JENKINS_HTTPPORT=80" },
         { "key": "env", "value": "JENKINS_AJP13PORT=-1" },
         { "key": "env", "value": "JENKINS_SYSTEM_MESSAGE=Systems Operations" },
-        { "key": "env", "value": "JENKINS_NODE_PROVISIONER_MARGIN=50" },
-        { "key": "env", "value": "JENKINS_NODE_PROVISIONER_MARGIN0=0.85" },
         { "key": "env", "value": "JENKINS_ADMIN_EMAIL=nobody@nowhere" },
         { "key": "env", "value": "MESOS_MASTER=zk://core-1:2181,core-5:2181,core-9:2181/mesos" },
         { "key": "env", "value": "MESOS_FRAMEWORK_NAME=sys-jenkins" },
         { "key": "env", "value": "MESOS_CHECKPOINT=true" },
         { "key": "env", "value": "MESOS_ON_DEMAND_REGISTRATION=true" },
-        { "key": "env", "value": "MESOS_IDLE_TERMINATION_MINUTES=1" },
+        { "key": "env", "value": "MESOS_IDLE_TERMINATION_MINUTES=5" },
         { "key": "env", "value": "SSL_TRUST=stash.redtonic:443" },
         { "key": "volume-driver", "value": "rbd" },
         { "key": "volume", "value": "sys-jenkins:/var/lib/jenkins" },
