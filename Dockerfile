@@ -9,8 +9,8 @@ MAINTAINER Marc Villacorta Morera <marc.villacorta@gmail.com>
 # Environment variables:
 #------------------------------------------------------------------------------
 
-ENV MESOS_VERSION="0.25.0" \
-    JENKINS_VERSION="1.642" \
+ENV MESOS_VERSION="0.26.0" \
+    JENKINS_VERSION="1.643" \
     JENKINS_MESOS_VERSION="0.8.0"
 
 #------------------------------------------------------------------------------
