@@ -78,7 +78,8 @@ JENKINS_SYSTEM_MESSAGE="${JENKINS_SYSTEM_MESSAGE:-'Jenkins master'}" && \
 sed -i "s/XXX-JENKINS_SYSTEM_MESSAGE-XXX/${JENKINS_SYSTEM_MESSAGE}/" ${CONFIG_FILE}
 
 # Set the Jenkins URL:
-JENKINS_URL="http://${HOST:-$(hostname -i)}:${JENKINS_HTTPPORT}" && \
+DOMAIN=$(awk '/mesos/ {print "marathon."$2; exit}' /etc/resolv.conf) && \
+JENKINS_URL="http://${MARATHON_APP_LABEL_NAME}.${DOMAIN}:${JENKINS_HTTPPORT}" && \
 sed -i "s#XXX-JENKINS_URL-XXX#${JENKINS_URL}#" ${CONFIG_FILE}
 sed -i "s#XXX-JENKINS_URL-XXX#${JENKINS_URL}#" ${LOCATION_CONF}
 
