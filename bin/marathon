@@ -9,11 +9,11 @@
 case $1 in
 
   start)
-    curl -sX POST -H "Content-type: application/json" ${MARATHON_URL}/v2/apps -d @marathon.json | jq
+    curl -sX POST -H "Content-type: application/json" ${MARATHON_URL}/v2/apps -d @marathon.json | jq '.'
     ;;
 
   restart)
-    curl -sX POST -H "Content-type: application/json" ${MARATHON_URL}/v2/apps/sys/jenkins/restart | jq
+    curl -sX POST -H "Content-type: application/json" ${MARATHON_URL}/v2/apps/sys/jenkins/restart | jq '.'
     ;;
 
 esac
