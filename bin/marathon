@@ -1,9 +1,6 @@
 #!/bin/bash
-#
-# ./bin/marathon start
-# ./bin/marathon restart
 
-[ $# -ne 1 ] && echo "Usage: $0 <start|restart>" && exit 1
+[ $# -ne 1 ] && echo "Usage: $0 <start|restart|destroy>" && exit 1
 [ -z "${MARATHON_URL}" ] && echo 'Ops! MARATHON_URL is not set' && exit 1
 
 case $1 in
@@ -14,6 +11,10 @@ case $1 in
 
   restart)
     curl -sX POST -H "Content-type: application/json" ${MARATHON_URL}/v2/apps/sys/jenkins/restart | jq '.'
+    ;;
+
+  destroy)
+    curl -sX DELETE -H "Content-type: application/json" ${MARATHON_URL}/v2/apps/sys/jenkins | jq '.'
     ;;
 
 esac
