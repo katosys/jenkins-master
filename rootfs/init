@@ -78,7 +78,7 @@ JENKINS_SYSTEM_MESSAGE="${JENKINS_SYSTEM_MESSAGE:-'Jenkins master'}" && \
 sed -i "s/XXX-JENKINS_SYSTEM_MESSAGE-XXX/${JENKINS_SYSTEM_MESSAGE}/" ${CONFIG_FILE}
 
 # Set domain and app ID:
-JENKINS_DOMAIN="${JENKINS_DOMAIN:-$(echo ${HOST} | awk -F. '{print $2"."$3".mesos"}')}"
+JENKINS_DOMAIN="${JENKINS_DOMAIN:-$(echo ${HOST} | awk -F. '{print "marathon."$2"."$3".mesos"}')}"
 APP_ID=$(echo $MARATHON_APP_ID | awk -F/ '{for (i=NF; i>0; i--){printf $i"-"}; printf "\n"}' | sed s'/-*$//')
 
 # Set the Jenkins URL:
