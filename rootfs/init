@@ -45,7 +45,6 @@
 JENKINS_HOME='/var/lib/jenkins'
 CONFIG_FILE="${JENKINS_HOME}_staging/config.xml"
 LOCATION_CONF="${JENKINS_HOME}_staging/jenkins.model.JenkinsLocationConfiguration.xml"
-DOMAIN=$(awk '/mesos/ {print "marathon."$2; exit}' /etc/resolv.conf)
 
 # Use Marathon provided port if JENKINS_HTTPPORT is not set by user:
 [ "${PORT0}" ] && [ ! "${JENKINS_HTTPPORT}" ] && JENKINS_HTTPPORT=${PORT0}
@@ -78,9 +77,13 @@ sed -i "s/XXX-MESOS_IDLE_TERMINATION_MINUTES-XXX/${MESOS_IDLE_TERMINATION_MINUTE
 JENKINS_SYSTEM_MESSAGE="${JENKINS_SYSTEM_MESSAGE:-'Jenkins master'}" && \
 sed -i "s/XXX-JENKINS_SYSTEM_MESSAGE-XXX/${JENKINS_SYSTEM_MESSAGE}/" ${CONFIG_FILE}
 
+# Set domain and app ID:
+JENKINS_DOMAIN="${JENKINS_DOMAIN:-$(echo ${HOST} | awk -F. '{print $2"."$3".mesos"}')}"
+APP_ID=$(echo $MARATHON_APP_ID | awk -F/ '{for (i=NF; i>0; i--){printf $i"-"}; printf "\n"}' | sed s'/-*$//')
+
 # Set the Jenkins URL:
-[[ "${MARATHON_APP_LABEL_NAME}" && "${DOMAIN}" ]] && \
-JENKINS_URL="http://${MARATHON_APP_LABEL_NAME}.${DOMAIN}:${JENKINS_HTTPPORT}" || \
+[[ "${JENKINS_DOMAIN}" && "${APP_ID}" ]] && \
+JENKINS_URL="http://${APP_ID}.${JENKINS_DOMAIN}:${JENKINS_HTTPPORT}" || \
 JENKINS_URL="http://${JENKINS_HOST:-$(hostname -i)}:${JENKINS_HTTPPORT}"
 sed -i "s#XXX-JENKINS_URL-XXX#${JENKINS_URL}#" ${CONFIG_FILE}
 sed -i "s#XXX-JENKINS_URL-XXX#${JENKINS_URL}#" ${LOCATION_CONF}

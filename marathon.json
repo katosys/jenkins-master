@@ -9,13 +9,12 @@
   "backoffFactor": 1.15,
   "maxLaunchDelaySeconds": 3600,
   "labels": {
-    "name": "jenkins-sys",
     "owner": "sys"
   },
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "h0tbird/jenkins:v1.647-1",
+      "image": "h0tbird/jenkins:v1.647-2",
       "network": "BRIDGE",
       "portMappings": [
         { "containerPort": 80, "hostPort": 0 }
