@@ -4,7 +4,7 @@
 
 This is a Mesos-aware containerized jenkins server.
 
-- It will run an eager Jenkins master.
+- It will run an eager Jenkins master (more details below).
 - It will provision slaves in a Mesos cluster.
 - The Mesos cluster is discovered using a Zookeeper cluster.
 - It will register as a Mesos framework only if the job queue has jobs.
@@ -28,3 +28,9 @@ docker run -it --rm \
 --publish 8080:8282 \
 h0tbird/jenkins:v1.647-2
 ```
+
+### Over provisioning flags
+
+By default, Jenkins spawns slaves conservatively. Say, if there are 2 builds in queue, it won't spawn 2 executors immediately. It will spawn one executor and wait for sometime for the first executor to be freed before deciding to spawn the second executor. Jenkins makes sure every executor it spawns is utilized to the maximum.
+If you want to override this behvaiour and spawn an executor for each build in queue immediately without waiting, you can use these flags during Jenkins startup:
+`JENKINS_NODE_PROVISIONER_MARGIN=50` `JENKINS_NODE_PROVISIONER_MARGIN0=0.85`
