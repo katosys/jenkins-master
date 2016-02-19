@@ -10,8 +10,8 @@ MAINTAINER Marc Villacorta Morera <marc.villacorta@gmail.com>
 #------------------------------------------------------------------------------
 
 ENV MESOS_VERSION="0.26.0" \
-    JENKINS_VERSION="1.647" \
-    JENKINS_MESOS_VERSION="0.10.0"
+    JENKINS_VERSION="1.648" \
+    JENKINS_MESOS_VERSION="0.10.1"
 
 #------------------------------------------------------------------------------
 # Update the base image:
