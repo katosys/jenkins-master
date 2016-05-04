@@ -9,10 +9,10 @@ MAINTAINER Marc Villacorta Morera <marc.villacorta@gmail.com>
 # Environment variables:
 #------------------------------------------------------------------------------
 
-ENV MESOS_VERSION="0.27.1" \
+ENV MESOS_VERSION="0.28.0" \
     MESOS_URL="http://repos.mesosphere.io/el/7/noarch/RPMS" \
-    JENKINS_VERSION="1.651" \
-    JENKINS_MESOS_VERSION="0.10.1"
+    JENKINS_VERSION="1.651.1" \
+    JENKINS_MESOS_VERSION="0.12.0"
 
 #------------------------------------------------------------------------------
 # Update the base image:

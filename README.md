@@ -17,7 +17,7 @@ docker run -it --rm \
 --env JENKINS_NODE_PROVISIONER_MARGIN=50 \
 --env JENKINS_NODE_PROVISIONER_MARGIN0=0.85 \
 --env JENKINS_ADMIN_EMAIL=nobody@nowhere \
---env MESOS_MASTER=zk://core-1:2181,core-3:2181,core-9:2181/mesos \
+--env MESOS_MASTER=zk://master-1:2181,master-2:2181,master-3:2181/mesos \
 --env MESOS_FRAMEWORK_NAME=jenkins-framework \
 --env MESOS_CHECKPOINT=true \
 --env MESOS_ON_DEMAND_REGISTRATION=true \
@@ -26,7 +26,7 @@ docker run -it --rm \
 --name jenkins \
 --volume ${PWD}/jenkins_data:/var/lib/jenkins \
 --publish 8080:8282 \
-h0tbird/jenkins:v1.651-1
+h0tbird/jenkins:v1.651.1-1
 ```
 
 ### Over provisioning flags
