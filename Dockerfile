@@ -28,16 +28,17 @@ RUN rpm --import http://mirror.centos.org/centos/7/os/x86_64/RPM-GPG-KEY-CentOS-
 RUN yum install -y ${MESOS_URL}/mesosphere-el-repo-7-1.noarch.rpm \
     yum-utils subversion-libs apr-util && mkdir /tmp/mesos && cd /tmp/mesos \
     && yumdownloader mesos-${MESOS_VERSION} && rpm2cpio mesos*.rpm | cpio -idm \
-    && cp usr/lib/libmesos-*.so /usr/lib/ && cd /usr/lib && ln -s libmesos-*.so libmesos.so \
-    && rm -rf /tmp/mesos && yum clean all
+    && cp usr/lib/libmesos-*.so /usr/lib/ && cd /usr/lib \
+    && ln -s libmesos-*.so libmesos.so && rm -rf /tmp/mesos && yum clean all
 
 #------------------------------------------------------------------------------
 # Install jenkins:
 #------------------------------------------------------------------------------
 
-RUN rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key \
+RUN rpm --import http://pkg.jenkins-ci.org/redhat-stable/jenkins-ci.org.key \
     && yum install -y java-1.7.0-openjdk-headless java-1.7.0-openjdk-devel wget openssl \
-    && wget -q -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo \
+    && wget -q -O /etc/yum.repos.d/jenkins.repo \
+       http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo \
     && yum install -y git jenkins-${JENKINS_VERSION} && yum clean all
 
 #------------------------------------------------------------------------------
