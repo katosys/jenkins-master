@@ -14,7 +14,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "h0tbird/jenkins:v1.651-1",
+      "image": "h0tbird/jenkins:v1.651.1-1",
       "network": "BRIDGE",
       "portMappings": [
         { "containerPort": 80, "hostPort": 0 }
@@ -30,7 +30,7 @@
         { "key": "env", "value": "MESOS_CHECKPOINT=true" },
         { "key": "env", "value": "MESOS_ON_DEMAND_REGISTRATION=true" },
         { "key": "env", "value": "MESOS_IDLE_TERMINATION_MINUTES=5" },
-        { "key": "env", "value": "SSL_TRUST=stash.redtonic:443" },
+        { "key": "env", "value": "SSL_TRUST=stash-sys.marathon:443" },
         { "key": "volume-driver", "value": "rexray" },
         { "key": "volume", "value": "sys-jenkins:/var/lib/jenkins" }
       ],
