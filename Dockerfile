@@ -11,7 +11,7 @@ MAINTAINER Marc Villacorta Morera <marc.villacorta@gmail.com>
 
 ENV MESOS_VERSION="0.28.0" \
     MESOS_URL="http://repos.mesosphere.io/el/7/noarch/RPMS" \
-    JENKINS_VERSION="1.651.1" \
+    JENKINS_VERSION="2.3" \
     JENKINS_MESOS_VERSION="0.12.0"
 
 #------------------------------------------------------------------------------
@@ -35,10 +35,10 @@ RUN yum install -y ${MESOS_URL}/mesosphere-el-repo-7-1.noarch.rpm \
 # Install jenkins:
 #------------------------------------------------------------------------------
 
-RUN rpm --import http://pkg.jenkins-ci.org/redhat-stable/jenkins-ci.org.key \
+RUN rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key \
     && yum install -y java-1.7.0-openjdk-headless java-1.7.0-openjdk-devel wget openssl \
     && wget -q -O /etc/yum.repos.d/jenkins.repo \
-       http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo \
+       http://pkg.jenkins-ci.org/redhat/jenkins.repo \
     && yum install -y git jenkins-${JENKINS_VERSION} && yum clean all
 
 #------------------------------------------------------------------------------

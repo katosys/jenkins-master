@@ -24,23 +24,25 @@
       <master>XXX-MESOS_MASTER-XXX</master>
       <description></description>
       <frameworkName>XXX-MESOS_FRAMEWORK_NAME-XXX</frameworkName>
+      <role>*</role>
       <slavesUser></slavesUser>
-      <principal>jenkins</principal>
-      <secret></secret>
+      <credentialsId></credentialsId>
       <checkpoint>XXX-MESOS_CHECKPOINT-XXX</checkpoint>
       <onDemandRegistration>XXX-MESOS_ON_DEMAND_REGISTRATION-XXX</onDemandRegistration>
       <jenkinsURL>XXX-JENKINS_URL-XXX</jenkinsURL>
+      <declineOfferDuration>600000</declineOfferDuration>
       <slaveInfos>
         <org.jenkinsci.plugins.mesos.MesosSlaveInfo>
-          <slaveCpus>2.0</slaveCpus>
+          <slaveCpus>1.0</slaveCpus>
           <slaveMem>256</slaveMem>
-          <executorCpus>1.0</executorCpus>
+          <executorCpus>0.5</executorCpus>
           <maxExecutors>2</maxExecutors>
           <executorMem>128</executorMem>
           <remoteFSRoot>jenkins</remoteFSRoot>
           <idleTerminationMinutes>XXX-MESOS_IDLE_TERMINATION_MINUTES-XXX</idleTerminationMinutes>
           <jvmArgs>-Xms16m -XX:+UseConcMarkSweepGC -Djava.net.preferIPv4Stack=true</jvmArgs>
-          <jnlpArgs></jnlpArgs>
+          <jnlpArgs>-noReconnect</jnlpArgs>
+          <defaultSlave>false</defaultSlave>
           <containerInfo>
             <type>DOCKER</type>
             <dockerImage>h0tbird/jenkins-slave</dockerImage>
@@ -85,6 +87,7 @@
             <dockerForcePullImage>true</dockerForcePullImage>
           </containerInfo>
           <mode>NORMAL</mode>
+          <nodeProperties/>
           <labelString>mesos</labelString>
         </org.jenkinsci.plugins.mesos.MesosSlaveInfo>
       </slaveInfos>
