@@ -4,7 +4,7 @@
   "cpus": 1,
   "mem": 2048,
   "disk": 0,
-  "requirePorts": true,
+  "requirePorts": false,
   "backoffSeconds": 1,
   "backoffFactor": 1.15,
   "maxLaunchDelaySeconds": 3600,
