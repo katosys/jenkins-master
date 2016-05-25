@@ -11,7 +11,7 @@ MAINTAINER Marc Villacorta Morera <marc.villacorta@gmail.com>
 
 ENV MESOS_VERSION="0.28.0" \
     MESOS_URL="http://repos.mesosphere.io/el/7/noarch/RPMS" \
-    JENKINS_VERSION="2.3" \
+    JENKINS_VERSION="2.6" \
     JENKINS_MESOS_VERSION="0.12.0"
 
 #------------------------------------------------------------------------------
