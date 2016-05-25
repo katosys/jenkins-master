@@ -11,6 +11,7 @@ MAINTAINER Marc Villacorta Morera <marc.villacorta@gmail.com>
 
 ENV MESOS_VERSION="0.28.0" \
     MESOS_URL="http://repos.mesosphere.io/el/7/noarch/RPMS" \
+    JENKINS_PLUGINS_URL="https://updates.jenkins-ci.org/download/plugins" \
     JENKINS_VERSION="2.6" \
     JENKINS_MESOS_VERSION="0.12.0"
 
@@ -46,7 +47,9 @@ RUN rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key \
 #------------------------------------------------------------------------------
 
 RUN mkdir -p /var/lib/jenkins/plugins && cd /var/lib/jenkins/plugins \
-    && wget -q http://updates.jenkins-ci.org/download/plugins/mesos/${JENKINS_MESOS_VERSION}/mesos.hpi
+    && wget -q ${JENKINS_PLUGINS_URL}/mesos/${JENKINS_MESOS_VERSION}/mesos.hpi \
+    && wget -q http://updates.jenkins-ci.org/latest/metrics.hpi \
+    && wget -q http://updates.jenkins-ci.org/latest/credentials.hpi
 
 #------------------------------------------------------------------------------
 # Populate root file system:
