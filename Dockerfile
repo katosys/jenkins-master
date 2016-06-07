@@ -9,10 +9,10 @@ MAINTAINER Marc Villacorta Morera <marc.villacorta@gmail.com>
 # Environment variables:
 #------------------------------------------------------------------------------
 
-ENV MESOS_VERSION="0.28.0" \
+ENV MESOS_VERSION="0.28.1" \
     MESOS_URL="http://repos.mesosphere.io/el/7/noarch/RPMS" \
     JENKINS_PLUGINS_URL="https://updates.jenkins-ci.org/download/plugins" \
-    JENKINS_VERSION="2.6" \
+    JENKINS_VERSION="2.8" \
     JENKINS_MESOS_VERSION="0.12.0"
 
 #------------------------------------------------------------------------------
@@ -47,9 +47,11 @@ RUN rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key \
 #------------------------------------------------------------------------------
 
 RUN mkdir -p /var/lib/jenkins/plugins && cd /var/lib/jenkins/plugins \
-    && wget -q ${JENKINS_PLUGINS_URL}/mesos/${JENKINS_MESOS_VERSION}/mesos.hpi \
-    && wget -q http://updates.jenkins-ci.org/latest/metrics.hpi \
-    && wget -q http://updates.jenkins-ci.org/latest/credentials.hpi
+    && wget -q http://updates.jenkins-ci.org/download/plugins/credentials/2.0.7/credentials.hpi \
+    && wget -q http://updates.jenkins-ci.org/download/plugins/junit/1.13/junit.hpi \
+    && wget -q http://updates.jenkins-ci.org/download/plugins/jackson2-api/2.7.3/jackson2-api.hpi \
+    && wget -q http://updates.jenkins-ci.org/download/plugins/metrics/3.1.2.7/metrics.hpi \
+    && wget -q ${JENKINS_PLUGINS_URL}/mesos/${JENKINS_MESOS_VERSION}/mesos.hpi
 
 #------------------------------------------------------------------------------
 # Populate root file system:

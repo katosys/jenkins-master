@@ -27,7 +27,7 @@ docker run -it --rm \
 --name jenkins \
 --volume ${PWD}/jenkins_data:/var/lib/jenkins \
 --publish 8080:8282 \
-h0tbird/jenkins:v2.3-1
+h0tbird/jenkins:v2.8-1
 ```
 
 ### Over provisioning flags
