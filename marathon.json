@@ -33,7 +33,7 @@
         { "key": "env", "value": "MESOS_IDLE_TERMINATION_MINUTES=5" },
         { "key": "env", "value": "SSL_TRUST=bitbucket-sys.marathon:443" },
         { "key": "volume-driver", "value": "rexray" },
-        { "key": "volume", "value": "cell-1_dub-sys-jenkins:/var/lib/jenkins" }
+        { "key": "volume", "value": "cell-1-dub-sys-jenkins:/var/lib/jenkins" }
       ],
       "forcePullImage": false
     }
