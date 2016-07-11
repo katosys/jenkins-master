@@ -12,7 +12,7 @@ MAINTAINER Marc Villacorta Morera <marc.villacorta@gmail.com>
 ENV MESOS_VERSION="0.28.1" \
     MESOS_URL="http://repos.mesosphere.io/el/7/noarch/RPMS" \
     JENKINS_PLUGINS_URL="https://updates.jenkins-ci.org/download/plugins" \
-    JENKINS_VERSION="2.8" \
+    JENKINS_VERSION="2.13" \
     JENKINS_MESOS_VERSION="0.12.0"
 
 #------------------------------------------------------------------------------

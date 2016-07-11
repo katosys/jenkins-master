@@ -1,7 +1,7 @@
 {
   "id": "/sys/jenkins",
   "instances": 1,
-  "cpus": 0.1,
+  "cpus": 0.5,
   "mem": 1024,
   "disk": 0,
   "requirePorts": false,
@@ -14,7 +14,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "h0tbird/jenkins:v2.8-1",
+      "image": "h0tbird/jenkins:v2.13-1",
       "network": "BRIDGE",
       "portMappings": [
         { "containerPort": 80, "hostPort": 0 }
