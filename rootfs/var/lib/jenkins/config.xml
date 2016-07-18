@@ -63,6 +63,11 @@
                 <readOnly>true</readOnly>
               </org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
               <org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
+                <containerPath>/lib/x86_64-linux-gnu/libgpg-error.so.0</containerPath>
+                <hostPath>/lib64/libgpg-error.so.0</hostPath>
+                <readOnly>true</readOnly>
+              </org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
+              <org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
                 <containerPath>/lib64/libdevmapper.so.1.02</containerPath>
                 <hostPath>/lib/libdevmapper.so.1.02</hostPath>
                 <readOnly>true</readOnly>
