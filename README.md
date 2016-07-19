@@ -1,6 +1,6 @@
 # docker-jenkins
 
-[![Build Status](https://travis-ci.org/h0tbird/docker-jenkins.svg?branch=master)](https://travis-ci.org/h0tbird/docker-jenkins)
+[![Build Status](https://travis-ci.org/katosys/docker-jenkins.svg?branch=master)](https://travis-ci.org/katosys/docker-jenkins)
 
 This is a Mesos-aware containerized jenkins server.
 
@@ -27,7 +27,7 @@ docker run -it --rm \
 --name jenkins \
 --volume ${PWD}/jenkins_data:/var/lib/jenkins \
 --publish 8080:8282 \
-h0tbird/jenkins:v2.13-1
+katosys/jenkins:v2.13-1
 ```
 
 ### Over provisioning flags

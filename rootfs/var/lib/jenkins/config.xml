@@ -45,7 +45,7 @@
           <defaultSlave>false</defaultSlave>
           <containerInfo>
             <type>DOCKER</type>
-            <dockerImage>h0tbird/jenkins-slave</dockerImage>
+            <dockerImage>katosys/jenkins-slave</dockerImage>
             <volumes>
               <org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
                 <containerPath>/usr/bin/docker</containerPath>
