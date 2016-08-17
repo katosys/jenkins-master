@@ -18,7 +18,7 @@ docker run -it --rm \
 --env JENKINS_NODE_PROVISIONER_MARGIN0=0.85 \
 --env JENKINS_ADMIN_EMAIL=nobody@nowhere \
 --env JENKINS_DOMAIN=marathon \
---env MESOS_MASTER=zk://master-1:2181,master-2:2181,master-3:2181/mesos \
+--env MESOS_MASTER=zk://quorum-1:2181,quorum-2:2181,quorum-3:2181/mesos \
 --env MESOS_FRAMEWORK_NAME=jenkins-framework \
 --env MESOS_CHECKPOINT=true \
 --env MESOS_ON_DEMAND_REGISTRATION=true \
