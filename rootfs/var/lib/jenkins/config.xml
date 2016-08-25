@@ -77,6 +77,11 @@
                 <hostPath>/var/run/docker.sock</hostPath>
                 <readOnly>false</readOnly>
               </org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
+              <org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
+                <containerPath>/tmp</containerPath>
+                <hostPath>/tmp</hostPath>
+                <readOnly>false</readOnly>
+              </org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Volume>
             </volumes>
             <parameters>
               <org.jenkinsci.plugins.mesos.MesosSlaveInfo_-Parameter>
