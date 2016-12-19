@@ -1,6 +1,6 @@
-# docker-jenkins
+# jenkins
 
-[![Build Status](https://travis-ci.org/katosys/docker-jenkins.svg?branch=master)](https://travis-ci.org/katosys/docker-jenkins)
+[![Build Status](https://travis-ci.org/katosys/jenkins.svg?branch=master)](https://travis-ci.org/katosys/jenkins)
 
 This is a Mesos-aware containerized jenkins server.
 
